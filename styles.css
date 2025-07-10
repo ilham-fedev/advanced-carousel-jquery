@@ -1,0 +1,86 @@
+.hero-slide {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.8s ease-in-out;
+}
+.hero-slide.active {
+  opacity: 1;
+  z-index: 5;
+}
+.thumbnail-card {
+  flex: 0 0 auto;
+  transition: all 0.5s ease-in-out;
+  scroll-snap-align: center;
+  transform-origin: center center;
+}
+
+#thumbnailContainer {
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.thumbnail-card.active {
+  transform: scale(1.15);
+  border: 2px solid white;
+  z-index: 10;
+  position: relative;
+  margin-right: 0.5rem !important;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animation enhancements */
+.thumbnail-card {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.thumbnail-card.animating {
+  pointer-events: none;
+}
+
+#thumbnailContainer {
+  will-change: opacity;
+  position: absolute;
+  overflow: visible;
+  z-index: 30;
+}
+
+/* Past data styling - half-cut effect for horizontal layout */
+.thumbnail-card.past-data {
+  transform: translateX(-50%);
+  opacity: 0.7;
+  filter: brightness(0.8);
+  position: relative;
+  z-index: 1;
+  margin-right: 6px;
+  overflow: hidden;
+}
+
+.thumbnail-card.past-data::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
+  border-radius: 0 8px 8px 0;
+}
+
+.thumbnail-card.past-data span {
+  opacity: 0.6;
+}
+
+/* Ensure proper flex layout */
+.flex-1 {
+  flex: 1;
+  min-width: 0;
+}
