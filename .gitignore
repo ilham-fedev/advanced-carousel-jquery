@@ -1,0 +1,5 @@
+# Ignore all files and folder starting with .claude
+.claude*.*
+/.claude
+
+.env
